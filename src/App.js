@@ -16,23 +16,30 @@ class App extends Component {
       .then(res => res.json())
       .then(data => this.setState({ data: data, isLoaded: true }));
   }
-
+  //set to the state the phrase you are looking for
   onSearchChange = e => {
     console.log(e.target.value);
     this.setState({ searchTerm: e.target.value });
     console.log(this.state);
   };
 
+  funcFilter = pattern => item =>
+    item.name.toLowerCase().includes(pattern.toLowerCase());
+
   render() {
-    let { isLoaded, data } = this.state;
+    let { isLoaded, data, searchTerm } = this.state;
 
     if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
       return (
-        <div className="App">
-          <Search searchChanger={this.onSearchChange} />
-          <Table data={data} />
+        <div className='App'>
+          <Search onSearchChange={this.onSearchChange} />
+          <Table
+            data={data}
+            pattern={searchTerm}
+            funcFilter={this.funcFilter}
+          />
         </div>
       );
     }

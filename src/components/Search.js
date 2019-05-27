@@ -1,13 +1,13 @@
 import React from "react";
 
-function Search(props) {
+const Search = props => {
   return (
     <div>
       <form>
-        <input onChange={props.searchChanger} />
+        <input onChange={props.onSearchChange} />
       </form>
     </div>
   );
-}
+};
 
 export default Search;
