@@ -1,12 +1,12 @@
 import React from "react";
 import TableRow from "./TableRow";
 
-const Table = ({ data, pattern, funcFilter }) => {
+const Table = ({ data }) => {
   return (
     <div>
       <TableRow />
 
-      {data.filter(funcFilter(pattern)).map(item => {
+      {data.map(item => {
         return (
           <TableRow
             fall={item.fall}
